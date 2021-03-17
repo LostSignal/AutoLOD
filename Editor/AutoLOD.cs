@@ -563,7 +563,7 @@ namespace Unity.AutoLOD
             // A NOP to make sure we have an instance before launching into threads that may need to execute on the main thread
             MonoBehaviourHelper.ExecuteOnMainThread(() => {});
 
-            var meshFilters = go.GetComponentsInChildren<MeshFilter>();
+            var meshFilters = go.GetComponentsInChildren<MeshFilter>().Where(x => x.GetComponent<MeshRenderer>() && x.GetComponent<MeshRenderer>().enabled).ToArray();
 
             if (meshFilters.Length > 0)
             {
