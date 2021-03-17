@@ -573,7 +573,7 @@ namespace Unity.AutoLOD
 
                 var lods = new LOD[maxLOD + 1];
                 var lod0 = lods[0];
-                lod0.renderers = go.GetComponentsInChildren<MeshRenderer>();
+                lod0.renderers = go.GetComponentsInChildren<MeshRenderer>().Where(x => x.enabled).ToArray();
                 lod0.screenRelativeTransitionHeight = 0.5f;
                 lods[0] = lod0;
 
